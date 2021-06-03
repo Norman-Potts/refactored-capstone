@@ -35,11 +35,15 @@ FIXED had to re write controller ~ Update employee updates but doesnt reload lis
 FIXED ~ Update employee doesnt lock id. ACTUALLY IT  DOES, it should look disabled. Like greyed out.
 
 
+
+
 Need to put employee availability on My Profile page.
-could save a copy of it and make a new one
 
+Could save a copy of it and make a new one
 
+Need to make a database creation script. 
 
+Need to test error responses for ajax.
 
 
 
