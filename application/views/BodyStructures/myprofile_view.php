@@ -4,6 +4,17 @@
 	$(document).ready(function() {	
 		
 		
+		var ProfilePicUploadmsg = '<?php echo ($ProfilePicUploadmsg); ?>' ;
+		
+		
+		if( ProfilePicUploadmsg != '' ) {
+			$('#UploadProfilePic').css({'display':"block"});
+			$('#ProfileErrorBox').append(ProfilePicUploadmsg);
+		} else {
+			$('#UploadProfilePic').css({'display':"none"});
+		}
+		
+		
 		$( "#ChangeProfiePic" ).addClass("ChangeProfiePic");
 		
 		$("#ChangeProfiePic").hover(
@@ -26,8 +37,11 @@
 			$('#UploadProfilePic').css({'display': "none"});
 		});
 		
+ 
+ 
 		
-		
+
+	 
 		
 		/** Function validateImg()			
 			Purpose: To front end validate the file the user has given in upload profile pic form.
@@ -44,6 +58,7 @@
 		*/
 		function validateImg()
 		{
+			
 			var passOrFail = false;	//passOrFail a boolean that stops the form if it is returned as false.
 			var ErrorString = ""; // ErrorString will hold the error message
 			var imgfile = imgForm.img.value;				
@@ -133,6 +148,20 @@
 		}
 
 		
+		$(document).on("mouseover", '.NewNotification', function (e) {	
+			console.log(<?php echo $_SESSION['EmployeeID']; ?>);
+			var span = e.target.getElementsByTagName("span");	
+			if(span != undefined &&   span.length == 1 ){
+				console.log(  parseInt(  span[0].innerHTML ));	
+				var inputarr = {};
+				inputarr["notificationID"] = parseInt( span[0].innerHTML ) ;		
+				inputarr["EmployeeID"] =  <?php  echo $_SESSION['EmployeeID']; ?>;
+				$.post('<?= base_Url(); ?>index.php/MyProfile/updateNotificationRead', inputarr, function(data) {	
+					$( e.target ).removeClass("NewNotification");
+					$( e.target ).addClass("OldNotification");
+				});				
+			}
+		});
 		
 		
 		loadNotifications();
@@ -147,8 +176,9 @@
 			{			
 				if(notifications[item]["readOrUnread"] == false)
 				{						
-					msg += "<div id=\"notificationCell\" class = \"NewNotification\">";					
-					msg += "<h4>"+notifications[item]["message"]+"</h4>";				
+					msg += "<div id=\"notificationCell\" class = \"NewNotification\"  >"; 		
+						msg += "<span hidden>"+notifications[item]["notificationID"]+"</span>";							
+						msg += "<h4>"+notifications[item]["message"]+"</h4>";							
 					msg += "</div>";
 				}
 			}				
@@ -157,7 +187,7 @@
 				if(notifications[item]["readOrUnread"] == true)
 				{
 					msg += "<div id=\"notificationCell\" class = \"OldNotification\">";			
-					msg += " <h4>"+notifications[item]["message"]+"</h4>";				
+						msg += " <h4>"+notifications[item]["message"]+"</h4>";				
 					msg += "</div>";
 				}
 			}														
@@ -491,6 +521,7 @@
 			<img src ="<?= assetUrl(); ?>img/UserProfilePics/<?= $_SESSION['EmployeeID'] ?>/<?= $_SESSION['EmployeeID'] ?>_profilepic_thumb.jpg"   alt ="<?= $_SESSION['Firstname']?>   <?= $_SESSION['Lastname'] ?>" />	
 			
 			<div id = "ChangeProfiePic">Change Profile picture</div>
+		
 			
 		</div>
 	</div>
@@ -498,17 +529,17 @@
 			<div id = "UploadProfilePic" class="modal" >
 				<div id = "ModalContent" >		
 					<div id = "close">x</div>
-					<p>First choose a picture then click upload picture.</p>
+					<p>First choose a picture then click upload picture. Maximum size is 2MB. </p>
 					<form action = "<?= base_Url(); ?>index.php/MyProfile/ProfilePicUpload" onsubmit = "return validateImg();" method="post" enctype="multipart/form-data" name = "imgForm" id = "imgForm">
 						<input type = "file" name = "img" id = "img"/>
 						<input type="hidden" value="<?= $_SESSION['EmployeeID'] ?>" name="ID" />
 						<input type ="submit" value = "Upload Picture"  name="UploadPic" />
+						
 					</form>										
-					<div id = "ProfileErrorBox">
-						<?php echo "".$msg; ?>
-					</div>
+					<div id = "ProfileErrorBox"></div>				
 				</div>
 			</div>
+
 			
 			
 

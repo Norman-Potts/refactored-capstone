@@ -2,7 +2,8 @@ body {
 		
 		background-color: rgb(63,72,204);			
 		color: black;
-		font-family: "Comic Sans MS", "Comic Sans";
+		/* font-family: "Comic Sans MS", "Comic Sans"; */
+		font-family:  Verdana, sans-serif;
 		
 	}
 
@@ -70,15 +71,24 @@ body {
 		#EditButton {
 			text-align: center;								
 			border: 5px solid black;
-			height: 80px;
-			width: 80px;
-			border-radius: 50%;						
-			padding: 3px;				
+			height: 110px;
+			min-width: 100px;
+			/*border-radius: 50%;*/			
 			display: inline-block;
 			float: right;
 			margin: 0;
-
+			
+			text-decoration: underline;
+			
 		}
+		#EditButton p {
+			padding: 0% 1em 0% 1em;   /*Margin: <Margin-top> || <Margin-right> || <Margin-bottom> || <Margin-left>*/
+			text-align: center;
+			vertical-align: middle;
+			overflow: hidden;
+			text-decoration: underline;
+		}	
+		
 		.EditButtonNotHover {
 			background: cyan;
 		}
@@ -94,11 +104,11 @@ body {
 			/*margin: 0% 0% 0% 0%;*//*Margin: <Margin-top> || <Margin-right> || <Margin-bottom> || <Margin-left>*/
 			padding: 0;				
 			display:  block;
-			float: left;									
-			border-radius: 50%;		
+			float: right;									
+			/* border-radius: 50%;		*/
 			border: 5px solid black;							
-			height: 80px;
-			width: 80px;
+			height: 110px;
+			width: 100px;
 		}
 		
 		.NoHoverlogoutButton {
@@ -123,8 +133,9 @@ body {
 			display: block;
 		}
 		
-		#EditButton p {
-			text-decoration: underline;
+		#EditButton  {
+			
+			
 		}
 		
 		#logoutButton p {
@@ -203,13 +214,14 @@ body {
 	}
 	
 	#ProfileErrorBox {		
-		color: black;
+		color: red;
 		display: none;
 		width: 60%;
 		height: 70%;
 		display: block;
 		float: left;		
 		text-align: left;
+		font-weight: bold;
 					
 	}
 	
@@ -265,9 +277,7 @@ body {
 	#Superprofilepic img:hover {
 		box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 	}	
-	#UploadProfilePic {
-		display: none;			
-	}
+ 
 	#ChangeProfiePic { 
 		padding-top: 5%;
 		padding-bottom: 5%;
@@ -325,6 +335,7 @@ body {
 	}
 	.NewNotification {
 		background: white;
+		
 	}
 	#notificationCell {
 		border: 3px solid black;
@@ -332,6 +343,7 @@ body {
 		padding-right: 1em;
 		margin: 0.5em;
 		border-radius: 15px;
+		cursor: pointer;
 	}
 	
 	#UserAvailability {		
@@ -411,18 +423,18 @@ body {
 			border: 3px solid black;
 			width: 50%; 
 			padding: 1em;
+			overflow: hidden;
 		}
 		
 		#HelpModal {
-		display: none; 
-		position: fixed; 		
-		left: 0;
-		top: 0;
-		width: 100%; 
-		height: 100%; 		
-		background-color: rgb(0,0,0); 
-		background-color: rgba(0,0,0,0.6); 
-			
+			display: none; 
+			position: fixed; 		
+			left: 0;
+			top: 0;
+			width: 100%; 
+			height: 100%; 		
+			background-color: rgb(0,0,0); 
+			background-color: rgba(0,0,0,0.6); 					
 		}
 		#HelpModalContent{
 			background-color: rgb(195,195,195);
@@ -444,7 +456,7 @@ body {
 			background-color: green;
 			border: 1px solid black;
 			border-radius: 10px;
-			
+			cursor: pointer;
 			
 		}
 		
@@ -460,12 +472,12 @@ body {
 			border: 5px solid black;
 			background-color: red;
 			border-radius: 50%;	
-			
+			cursor: pointer;
 		
 		}
 			
 		#help p {
-			text-align: center;
+			text-align: center;loginbutton
 			vertical-align: middle;
 			color: black;
 			
@@ -1241,7 +1253,7 @@ body {
 			display: block;
 			float: left;
 			cursor: pointer;
-			cursor: hand;
+			
 		}
 		#ChatMessageBox {
 			background: white;
@@ -1819,6 +1831,7 @@ body {
 		border: 1px solid red;
 		padding: 1em;
 		background: white;
+		cursor: pointer;
 	}
 	
 	#CancelDelete {

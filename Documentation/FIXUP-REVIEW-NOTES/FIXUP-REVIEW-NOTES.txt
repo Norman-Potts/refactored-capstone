@@ -1,51 +1,57 @@
 Walk threw and set up bugs
-
-
 Error reporting
 	-not set up correctly
 	-not displaying any info
 	-Not sure how to configure error reporting.
 	-Not sure how to turn off or on error reporting. 
-
-FIXED asset path 403. Needed to delete .htaccess files that got added by apache.
+FIXED ~ asset path 403. Needed to delete .htaccess files that got added by apache.
 error with $msg variable, just added lines to login page. FIXED
 Need to set up DB. ~ FIXED, DB probabbly set up correctly.
 Logout button not displayed.~ FIXED
 Logout works but doesn't take you to an appriate page. ~ FIXED logout appears to be working. 
-
 Subslip form has no date data, or shift data. ~ FIXED Changed function CreateSelectArray and  deleted the copy schedual page function.
 Schedule has no date data, or shift data. ~ FIXED Changed function CreateSelectArray and  deleted the copy schedual page function.
 Create shift has no date or time in listboxes. ~ FIXED Changed function CreateSelectArray and  deleted the copy schedual page function.
 Schedule page has no date or time in listboxes. ~ FIXED Changed function CreateSelectArray and  deleted the copy schedual page function.
-
 FIXED ~ Create employee has error 'Undefined property passORfail', how every employee appears to be created on update employee page, and in data base. 
 FIXED ~ Create employee function doesnt create thumb nail for a new employee. 
 FIXED ~ Login in with inncorrect username causes error. ~ FIXED. has to change function 'userIsInDatabase' to have an if function that checked if the row was null.
 FIXED ~ 500 Error on Getallsublips call on home page.
 FIXED ~ My profile page: Change profile pitcure button on my profile page has an error when clicked. 
-
-
 Chat box doesnt work. 500 on get call to ReloadChatBox ~ FIXED chat box appears to be working. 
-
 Delete Employees page has 'undefined variable $row' line 40. ~ FIXED, added control structure to stop printing variables if they are empty. 
-
-FIXED added 'php' to '<?' ~ My profile page: Certifications table has no results. 
-
-FIXED had to re write controller ~ Update employee updates but doesnt reload list.  
+FIXED ~ added 'php' to '<?' ~ My profile page: Certifications table has no results. 
+FIXED ~ had to re write controller ~ Update employee updates but doesnt reload list.  
 FIXED ~ Update employee doesnt lock id. ACTUALLY IT  DOES, it should look disabled. Like greyed out.
+FIXED ~ My profile page: Change profile pitcure, error and feed back doesn't work well. 
+FIXED ~ My profile page: After change profile pitcure, availavility, certifications, and notifications don't get displayed. 
+Need to make a database creation script. ~ FIXED
+
+When mouse hovers over each notification on profile page reduce new notification count. 
 
 
 
 
-Need to put employee availability on My Profile page.
-
-Could save a copy of it and make a new one
-
-Need to make a database creation script. 
 
 Need to test error responses for ajax.
 
 
 
+Organize Subslip form in a tidy mannor.
 
- 
+Set up testing strategy for Subslip system 
+
+Set up testing strategy for profile pitcure change. 
+
+Add feature that allows 
+
+On create shift page limit shift date to today and forward. 
+
+Idea for new version make a interface that allows you to create new shift types and positions
+
+
+Set up testing strategy for create shift and schedule
+
+
+Set up testing strategy for delete a shift
+

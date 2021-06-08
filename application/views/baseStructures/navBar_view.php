@@ -117,13 +117,16 @@
 						<img src ="<?= assetUrl(); ?>img/UserProfilePics/<?= $_SESSION['EmployeeID'] ?>/<?= $_SESSION['EmployeeID'] ?>_profilepic_thumb.jpg"  class="" alt ="<?= $_SESSION['Firstname']?>   <?= $_SESSION['Lastname'] ?>" />																		
 		</a>				
 		
-		<!-- If This is a supervisor account show theEditPage link. -->
-		<? if ($_SESSION['Supervisor'] == true  ){   ?>				
-			<a href ="<?= base_url(); ?>index.php?/TheEditPage"> <div id = "EditButton"><p> The Edit page </p> </div></a>				
-		<?}?>		
 		
 		<!-- Logout link -->
 		 <a href = "<?= base_url()?>index.php/Home/logout"  > <div id="logoutButton"> <p>Logout</p></div></a>			
+		
+		
+		<!-- If This is a supervisor account show theEditPage link. -->
+		<? if ($_SESSION['Supervisor'] == true  ){   ?>				
+			<a href ="<?= base_url(); ?>index.php?/TheEditPage"> <div id = "EditButton"><p> Supervisor's Controls </p></div></a>				
+		<?}?>		
+		
 		 
 	</div>
 	<div id = "CenterBox" >

@@ -615,7 +615,7 @@
 				<div class = "GeneralWhiteGreyInner">
 					<p>Select type of Shift</p>
 						<ul>
-							<li><input type = "radio" name="Cert" value = "1" id = "Lifeguard" /> Lifeguard</li>
+							<li><input type = "radio" name="Cert" value = "1" id = "Lifeguard" />Lifeguard</li>
 							<li><input type = "radio" name="Cert" value = "2" id = "Instructor" />Instructor</li>
 							<li><input type = "radio" name="Cert" value = "3" id = "Headguard" />Headguard</li>
 							<li><input type = "radio" name="Cert" value = "4" id = "Supervisor" />Supervisor</li>

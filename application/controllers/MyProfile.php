@@ -12,7 +12,7 @@
 	}
 
 	public function index() {
-		$this->TPL['msg'] ='';
+		$this->TPL['ProfilePicUploadmsg'] ='';
 		$this->TPL['Notifications'] = $this->GetNotifications();
 		$this->TPL['Availability'] = $this->GetAvailability();
 		$this->template->show('myprofile_view', $this->TPL);
@@ -28,7 +28,9 @@
 			$ID, the ID of the user who is logged in, and uploading the file.					
 	*/
 	public function ProfilePicUpload( ) {
-		$this->TPL['msg'] ='';
+		$this->TPL['ProfilePicUploadmsg'] ='';
+		$this->TPL['Notifications'] = $this->GetNotifications();
+		$this->TPL['Availability'] = $this->GetAvailability();
 		// Get form data. 
 		$ID = $this->input->post("ID"); //The ID given by the form
 		$file = $this->input->post("img"); //The img file given by the form
@@ -47,8 +49,7 @@
 			$IDmatch = false;
 			//TODO: Write to error log.
 			$ErrorMsg = "ID does not match. ";
-		}	
-		
+		}			
 		//Test 2: confirm file is a jpg img.
 		/*
 			Using code igniter because it appears to be the best way to do this...
@@ -63,12 +64,12 @@
 		$filename = $ID.'_profilepic.jpg';						// changed profilepic name to id_profile pic to have all profile pic identify with key.
 		$config['file_name'] = $filename ;			//names the img 1_profilepic.jpg 
 		$config['overwrite'] = true;					//Overwrites the old profilepic.jpg		
-		$this->load->library('upload', $config); //Load library
-				
+		$this->load->library('upload', $config); //Load library				
 		// If the upload of the file in the img field returns false do this... else do this...
 		if ( ! $this->upload->do_upload('img')) {
 			//The image upload was unsuccessful, display the errors again.
-			$this->TPL['msg'] = array('error' => $this->upload->display_errors());
+			$arrr = array('error' => $this->upload->display_errors());
+			$this->TPL['ProfilePicUploadmsg'] = $arrr['error'];
 			$this->template->show('myprofile_view', $this->TPL);	
 		} else {
 			//The image upload was appently successful, 
@@ -83,12 +84,13 @@
 			$config['height']   = 170;
 			$this->load->library('image_lib', $config);	
 			if ( ! $this->image_lib->resize()	) {
-				//resize was unsuccessful.
-				$this->TPL['msg'] = array('error' => $this->image_lib->display_errors());
+				//// Resize was unsuccessful.
+				$arrr = array('error' => $this->image_lib->display_errors());
+				$this->TPL['ProfilePicUploadmsg'] = $arrr['error'];
 				$this->template->show('myprofile_view', $this->TPL);		
 			} else {
-				//resize was successful				
-				$this->TPL['msg'] = "Upload was successful";				
+				//// Resize was successful.			
+				$this->TPL['ProfilePicUploadmsg'] = "Upload was successful";				
 				$this->template->show('myprofile_view', $this->TPL);						
 				/*$page = base_url() . "index.php?/MyProfile";
 				$this->redirect($page);*/
@@ -175,7 +177,7 @@
 			}   
 			usort($list, 'date_compare');
 			
-			$query = $CI->db->query("UPDATE `Notifications` SET `readOrUnread`= '1' WHERE `employeeID` = ".$ID.";");						
+			//$query = $CI->db->query("UPDATE `Notifications` SET `readOrUnread`= '1' WHERE `employeeID` = ".$ID.";");						
 			
 			/*Now delete the oldest notifications if the size is greater than 50*/
 			if(  sizeof($list) > 50 )
@@ -186,8 +188,8 @@
 				/*Start at the 30th oldest notification and delete all after that.*/
 				for( $i = 30; $i < $lstSize; $i++ )
 				{
-					$Nid = $list[$i]["NotificationID"];
-					$query = $CI->db->query("DELETE FROM `Notifications` WHERE NotificationID = ".$Nid.";");
+					$Nid = $list[$i]["notificationID"];
+					$query = $CI->db->query("DELETE FROM `Notifications` WHERE notificationID = ".$Nid.";");
 				}
 			}
 			
@@ -198,7 +200,20 @@
 		}/*End of Function GetNotifications*/
 		
 
-  
+	public function updateNotificationRead() {
+		$EmployeeID =$_REQUEST['EmployeeID'];
+		$notificationID = $_REQUEST['notificationID'];		
+		 
+		$e =  is_numeric ($EmployeeID);
+		$n =  is_numeric ($notificationID);
+		if (  $n == true && $e == true) {
+			$CI =& get_instance();  
+			$UPDATESTATEMENT = "UPDATE `Notifications` SET `readOrUnread`= '1' WHERE `employeeID` = '".$EmployeeID."' AND `notificationID` = '".$notificationID."' ;";
+			$query = $CI->db->query($UPDATESTATEMENT); 
+			echo  "Success";  		
+		}
+		
+	}
 }
 
 ?>

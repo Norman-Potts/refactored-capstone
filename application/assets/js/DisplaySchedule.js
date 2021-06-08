@@ -333,14 +333,14 @@
 				inputarr['EmployeeID'] = EmployeeID;
 				inputarr['TheDate'] = TheDate;
 				inputarr['shiftid'] = shiftid;					
-			$.post('https://csunix.mohawkcollege.ca/~000344657/private/CapStone/index.php/DeleteAShift/DeleteTheShift', inputarr, function(data)
+			$.post('http://localhost/final-capstone-code/CapStone/index.php/DeleteAShift/DeleteTheShift', inputarr, function(data)
 			{	
 				/* Determine If delete was succesful, and reload the page. */ 
 				$('#BoxOfDelete').empty();					
 				//Need to reload $TheScheduleArray Variable.
 				var inputDate = {};
 				inputDate['GivenDate'] = TheDate;			
-				$.post('https://csunix.mohawkcollege.ca/~000344657/private/CapStone/index.php/CreateAShift/reloadTheScheduleArraybyGivenDate', inputDate, function(data)
+				$.post('http://localhost/final-capstone-code/CapStone/index.php/CreateAShift/reloadTheScheduleArraybyGivenDate', inputDate, function(data)
 				{	
 					var TheScheduleArray  = JSON.parse( data );
 					DisplaySchedule(TheScheduleArray, true); 			
