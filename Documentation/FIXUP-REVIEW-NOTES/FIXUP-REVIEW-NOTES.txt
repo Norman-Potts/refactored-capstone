@@ -34,24 +34,12 @@ When mouse hovers over each notification on profile page reduce new notification
 
 
 Need to test error responses for ajax.
-
-
-
 Organize Subslip form in a tidy mannor.
-
-Set up testing strategy for Subslip system 
-
+Set up testing strategy for Subslip system. 
 Set up testing strategy for profile pitcure change. 
-
 Add feature that allows 
-
 On create shift page limit shift date to today and forward. 
-
 Idea for new version make a interface that allows you to create new shift types and positions
-
-
 Set up testing strategy for create shift and schedule
-
-
 Set up testing strategy for delete a shift
 
