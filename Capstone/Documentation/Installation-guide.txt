@@ -3,8 +3,9 @@ Breif installation guide.
 
 
 1. Copy Capstone folder and contents to apache web directory.
-2. Run `configure-capstone-db.sql' on phpmyadmin to create the mysql database.
+2. Create a database on php then `configure-capstone-db.sql' on phpmyadmin.
 3. Create a user called "capstone" on phpmyadmin and grant it select, insert, update, & delete, on the capstone database.
  Confirm password and host match for the user account. 
 4. Confirm 'base_url' in config.php matches the base user you are using. This config field covers all the urls except two jquery post calls 
  in DisplaySchedule.js. You will have to change the post calls your manually. 
+5. Change owner of capstone to daemon Recurively. Change permissions as needed.
