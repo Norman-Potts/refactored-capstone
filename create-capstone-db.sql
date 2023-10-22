@@ -24,20 +24,20 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `chatboxmessages`
+-- Table structure for table `Chatboxmessages`
 --
 
-CREATE TABLE `chatboxmessages` (
+CREATE TABLE `Chatboxmessages` (
   `CreatedDateAndTime` datetime NOT NULL,
   `Message` blob NOT NULL,
   `employeeID` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `chatboxmessages`
+-- Dumping data for table `Chatboxmessages`
 --
 
-INSERT INTO `chatboxmessages` (`CreatedDateAndTime`, `Message`, `employeeID`) VALUES
+INSERT INTO `Chatboxmessages` (`CreatedDateAndTime`, `Message`, `employeeID`) VALUES
 ('2021-06-01 00:28:19', 0x44616e6b6965446f6f646c65, 1),
 ('2021-06-01 00:28:26', 0x597570707070, 1),
 ('2021-06-01 00:28:35', 0x49747320776f726b696e67212121, 1),
@@ -74,10 +74,10 @@ INSERT INTO `employees` (`Username`, `password`, `employeeID`, `Supervisor`, `In
 -- --------------------------------------------------------
 
 --
--- Table structure for table `notifications`
+-- Table structure for table `Notifications`
 --
 
-CREATE TABLE `notifications` (
+CREATE TABLE `Notifications` (
   `employeeID` int(255) NOT NULL,
   `type` int(255) NOT NULL,
   `message` blob NOT NULL,
@@ -86,10 +86,10 @@ CREATE TABLE `notifications` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `notifications`
+-- Dumping data for table `Notifications`
 --
 
-INSERT INTO `notifications` (`employeeID`, `type`, `message`, `readOrUnread`, `CreatedDateAndTime`) VALUES
+INSERT INTO `Notifications` (`employeeID`, `type`, `message`, `readOrUnread`, `CreatedDateAndTime`) VALUES
 (2, 5, 0x596f7520776572652061737369676e6564206120536869667420666f7220323032312d30352d33312066726f6d2030303a30303a303020746f2030303a33303a3030206173204c6966656775617264696e672e, 0, '2021-05-31'),
 (3, 5, 0x596f7520776572652061737369676e6564206120536869667420666f7220323032312d30352d33312066726f6d2030303a30303a303020746f2030303a33303a303020617320496e7374727563746f72696e672e, 0, '2021-05-31'),
 (1, 5, 0x596f7520776572652061737369676e6564206120536869667420666f7220323032312d30352d33312066726f6d2030303a30303a303020746f2030303a33303a303020617320486561644775617264696e672e, 1, '2021-05-31'),
@@ -104,10 +104,10 @@ INSERT INTO `notifications` (`employeeID`, `type`, `message`, `readOrUnread`, `C
 -- --------------------------------------------------------
 
 --
--- Table structure for table `shifts`
+-- Table structure for table `Shifts`
 --
 
-CREATE TABLE `shifts` (
+CREATE TABLE `Shifts` (
   `ShiftID` int(255) NOT NULL,
   `DefaultOwnerEmployeeID` int(255) NOT NULL,
   `CurrentOwnerEmployeeID` int(255) NOT NULL,
@@ -118,10 +118,10 @@ CREATE TABLE `shifts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `shifts`
+-- Dumping data for table `Shifts`
 --
 
-INSERT INTO `shifts` (`ShiftID`, `DefaultOwnerEmployeeID`, `CurrentOwnerEmployeeID`, `date`, `startTime`, `endTime`, `Position`) VALUES
+INSERT INTO `Shifts` (`ShiftID`, `DefaultOwnerEmployeeID`, `CurrentOwnerEmployeeID`, `date`, `startTime`, `endTime`, `Position`) VALUES
 (2, 0, 0, '2021-05-31', '00:00:00', '00:30:00', '2'),
 (3, 1, 1, '2021-05-31', '00:00:00', '00:30:00', '3'),
 (4, 1, 1, '2021-05-31', '05:30:00', '11:00:00', '4'),
@@ -135,10 +135,10 @@ INSERT INTO `shifts` (`ShiftID`, `DefaultOwnerEmployeeID`, `CurrentOwnerEmployee
 -- --------------------------------------------------------
 
 --
--- Table structure for table `subslips`
+-- Table structure for table `Subslips`
 --
 
-CREATE TABLE `subslips` (
+CREATE TABLE `Subslips` (
   `CreatorID` int(255) NOT NULL,
   `TakerID` int(255) DEFAULT NULL,
   `ShiftDate` date NOT NULL,
@@ -165,16 +165,16 @@ ALTER TABLE `employees`
   ADD UNIQUE KEY `employeeID` (`employeeID`);
 
 --
--- Indexes for table `shifts`
+-- Indexes for table `Shifts`
 --
-ALTER TABLE `shifts`
+ALTER TABLE `Shifts`
   ADD PRIMARY KEY (`ShiftID`),
   ADD UNIQUE KEY `ShiftID` (`ShiftID`);
 
 --
--- Indexes for table `subslips`
+-- Indexes for table `Subslips`
 --
-ALTER TABLE `subslips`
+ALTER TABLE `Subslips`
   ADD PRIMARY KEY (`subslipID`);
 
 --
@@ -188,9 +188,9 @@ ALTER TABLE `employees`
   MODIFY `employeeID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT for table `shifts`
+-- AUTO_INCREMENT for table `Shifts`
 --
-ALTER TABLE `shifts`
+ALTER TABLE `Shifts`
   MODIFY `ShiftID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 

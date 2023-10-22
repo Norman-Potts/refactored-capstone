@@ -10,7 +10,7 @@
 
 body {
 	background-color: rgb(153,217,234);	
-	font-family: "Comic Sans MS", "Comic Sans";
+	
 	text-align: center;	
 }
 

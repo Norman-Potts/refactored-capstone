@@ -136,7 +136,7 @@
 				$UPDATE_shift_STATEMENT = "UPDATE `Shifts` SET  `CurrentOwnerEmployeeID` =  '".$TakerID."' WHERE `ShiftID` = '".$ShiftID."' ;";
 				
 				//Update SubSlip
-				$UPDATE_subslip_STATEMENT = "UPDATE `SubSlips` SET  `completed` =  '1' WHERE `subslipID` = '".$subslipID."';";
+				$UPDATE_subslip_STATEMENT = "UPDATE `Subslips` SET  `completed` =  '1' WHERE `subslipID` = '".$subslipID."';";
 				
 				$both = $UPDATE_shift_STATEMENT." ".$UPDATE_subslip_STATEMENT;
 				
@@ -204,7 +204,7 @@
 		{
 			$CI =& get_instance();												
 			$theDate = $this->theschedule->YYYMMDDTodayplz();					
-			$SELECTSTATEMENT = "SELECT e.Firstname, e.Lastname, s.ShiftID, s.CreatorID, s.CreatorID, s.subslipID, s.TakerID, s.ShiftDate, s.startTime, s.endTime, s.Position, s.Reason, s.TakenTrueorFalse, s.TakenDateAndTime, s.CreatedDateAndTime  FROM `SubSlips` s JOIN `Employees` e ON s.CreatorID = e.employeeID WHERE `TakenTrueorFalse` = '1' AND `completed` = False AND `ShiftDate` > '".$theDate ."' ;";			
+			$SELECTSTATEMENT = "SELECT e.Firstname, e.Lastname, s.ShiftID, s.CreatorID, s.CreatorID, s.subslipID, s.TakerID, s.ShiftDate, s.startTime, s.endTime, s.Position, s.Reason, s.TakenTrueorFalse, s.TakenDateAndTime, s.CreatedDateAndTime  FROM `Subslips` s JOIN `Employees` e ON s.CreatorID = e.employeeID WHERE `TakenTrueorFalse` = '1' AND `completed` = False AND `ShiftDate` > '".$theDate ."' ;";			
 			$query = $CI->db->query($SELECTSTATEMENT);
 			$list = $query->result_array();
 			
@@ -259,7 +259,7 @@
 					$Firstname = $list[0]["Firstname"];
 				
 														
-					$SELECTSTATEMENT = "SELECT `startTime`, `endTime`, `ShiftDate`, `Position`, `TakerID` FROM `SubSlips` WHERE `subslipID` = ".$subslipID.";";
+					$SELECTSTATEMENT = "SELECT `startTime`, `endTime`, `ShiftDate`, `Position`, `TakerID` FROM `Subslips` WHERE `subslipID` = ".$subslipID.";";
 					$CI =& get_instance(); //TODO: FIX security.
 					$query = $CI->db->query($SELECTSTATEMENT);
 					$list = $query->result_array();			
@@ -331,7 +331,7 @@
 					
 					
 					$CI =& get_instance();												
-					$DELETESTATEMENT = "DELETE FROM `SubSlips` WHERE `subslipID` = '".$subslipID."' ;";
+					$DELETESTATEMENT = "DELETE FROM `Subslips` WHERE `subslipID` = '".$subslipID."' ;";
 					$query = $CI->db->query($DELETESTATEMENT);
 					$instructions = 1;
 					

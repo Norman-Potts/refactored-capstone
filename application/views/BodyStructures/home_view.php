@@ -39,8 +39,10 @@
 			inputarr['Lifeguard'] = certs['Lifeguard'];
 			inputarr['Instructor'] = certs['Instructor'];
 			inputarr['Headguard'] = certs['Headguard'];
+		
 			$.post('<?= base_Url(); ?>index.php/Home/GetAvailableSubSlips', inputarr, function(data)
-			{				
+			{	
+				 		
 				AllSubSlipsThatHaventBeenTaken	= JSON.parse(data);
 				LoadShiftsUpForGrabs(AllSubSlipsThatHaventBeenTaken);
 			});

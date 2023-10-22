@@ -8,7 +8,7 @@
 
 body {
 	background-color: rgb(153,217,234);	
-	font-family: "Comic Sans MS", "Comic Sans";
+	
 	text-align: center;	
 }
 
@@ -30,20 +30,12 @@ body {
 <body>
 	
 <div class = "ErrorBox" >
-<h1> 
-Aquatic Employee
-Schedule Website
-</h1>
 
-<p>aaa</p>
-<div id = "ErrorBlock"> 	
-	<h4> Error! :( </h4>
-	<p>Something broke on the scheduling application.
-	The web application technician will try and fix the problem.
-	Please try to use this website later.
-	Sorry for the inconvenience. </p>
-</div>
-	
+
+	<?php
+		echo debug_print_backtrace();
+
+	?>
 	
 	
 		

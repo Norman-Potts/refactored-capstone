@@ -112,12 +112,12 @@
 					 */					
 					if( $AutoApprove == false )
 					{
-						$UPDATESTATEMENT = "UPDATE `SubSlips` SET `TakenDateAndTime` = '".$TakenDateAndTime."' , `TakenTrueorFalse` = '1' , `TakerID` = '".$takerID."' WHERE `subslipID` = '".$subslipID."' ;";						
+						$UPDATESTATEMENT = "UPDATE `Subslips` SET `TakenDateAndTime` = '".$TakenDateAndTime."' , `TakenTrueorFalse` = '1' , `TakerID` = '".$takerID."' WHERE `subslipID` = '".$subslipID."' ;";						
 						$query = $CI->db->query($UPDATESTATEMENT);	
 					}
 					else
 					{
-						$UPDATESTATEMENT = "UPDATE `SubSlips` SET `TakenDateAndTime` = '".$TakenDateAndTime."', `TakenTrueorFalse` = '1' , `TakerID` = '".$takerID."', `completed` = '1' WHERE `subslipID` = '".$subslipID."' ;";
+						$UPDATESTATEMENT = "UPDATE `Subslips` SET `TakenDateAndTime` = '".$TakenDateAndTime."', `TakenTrueorFalse` = '1' , `TakerID` = '".$takerID."', `completed` = '1' WHERE `subslipID` = '".$subslipID."' ;";
 						$query = $CI->db->query($UPDATESTATEMENT);		
 						$UPDATE_shift_STATEMENT = "UPDATE `Shifts` SET  `CurrentOwnerEmployeeID` = '".$takerID."' WHERE `ShiftID` = '".$ShiftID."' ;";																
 						$query = $CI->db->query($UPDATE_shift_STATEMENT);
@@ -245,7 +245,7 @@
 				$ShiftHasASubSlip = false;				
 
 				/* Query for subslips of this employee and shift date is this shift date and time is this time and taken is false.*/
-				$SELECTSTATEMENT = "SELECT * FROM `SubSlips` WHERE `CreatorID` = '".$EmployeeID."' AND `ShiftDate` = '".$ShiftDate."' AND `Position` = '".$Position."' AND `startTime` = '".$startTime."' AND `endTime` = '".$endTime."' AND `TakenTrueorFalse` = '0';";				
+				$SELECTSTATEMENT = "SELECT * FROM `Subslips` WHERE `CreatorID` = '".$EmployeeID."' AND `ShiftDate` = '".$ShiftDate."' AND `Position` = '".$Position."' AND `startTime` = '".$startTime."' AND `endTime` = '".$endTime."' AND `TakenTrueorFalse` = '0';";				
 				$query = $CI->db->query(	$SELECTSTATEMENT	);
 				$SubSliplist = $query->result_array();			
 				/*
@@ -327,7 +327,7 @@
 				$CI =& get_instance();			
 				try
 				{
-					$SELECTSTATEMENT = "SELECT * FROM `SubSlips` WHERE `CreatorID` = '".$EmployeeID."' AND `ShiftDate` = '".$ShiftDate."' AND `Position` = '".$Position."' AND `startTime` = '".$startTime."' AND `endTime` = '".$endTime."' AND `TakenTrueorFalse` = '0';";
+					$SELECTSTATEMENT = "SELECT * FROM `Subslips` WHERE `CreatorID` = '".$EmployeeID."' AND `ShiftDate` = '".$ShiftDate."' AND `Position` = '".$Position."' AND `startTime` = '".$startTime."' AND `endTime` = '".$endTime."' AND `TakenTrueorFalse` = '0';";
 					$query = $CI->db->query(	$SELECTSTATEMENT	);
 					$list = $query->result_array();
 				}
@@ -489,6 +489,7 @@
 		*/
 		public function GetAvailableSubSlips() {
 			$EmployeeID = $_REQUEST['ID'];  $Lifeguard = $_REQUEST['Lifeguard'];  $Instructor = $_REQUEST['Instructor'];  $Headguard = $_REQUEST['Headguard'];  $Supervisor = $_REQUEST['Supervisor'];		
+
 			$CI =& get_instance();  $TodayDate = $this->theschedule->YYYMMDDTodayplz();						
 			///Make a SQL Select Statement that gets the necessary information from SubSlip table and  Employee table. The current Logic structure below adds "position equals digit" depending  on the certifications passed by the $_REQUEST array.						
 			$strlife ="";
@@ -511,7 +512,7 @@
 			$SELECTSTATEMENT = "SELECT S.CreatorID, S.ShiftID, S.subslipID, S.ShiftDate,
 			S.startTime, S.endTime, S.Position, S.Reason, S.CreatedDateAndTime, E.Firstname, 
 			E.Lastname, E.Instructor, E.Lifeguard, E.Headguard, E.Supervisor
-			FROM `SubSlips` S 
+			FROM `Subslips` S 
 			JOIN `Employees` E ON S.CreatorID = E.employeeID 
 			WHERE `TakenTrueorFalse` = '0' AND ShiftDate >  '".$TodayDate."' AND (".$posStr.");";
 			$query = $CI->db->query(	$SELECTSTATEMENT	);
@@ -544,7 +545,8 @@
 					$ALL_SubSlipsthisEmployeeHasCertsFor[$key]["Conflict"] = true;
 				}
 			}/// End of foreach			
-			echo json_encode($ALL_SubSlipsthisEmployeeHasCertsFor);		
+			echo json_encode($ALL_SubSlipsthisEmployeeHasCertsFor);	
+		
 		}/*End of function GetAvailableSubSlips*/
 	
 		
@@ -565,7 +567,7 @@
 						'Message' => $ChatMessage,
 						'CreatedDateAndTime' => $DateAndTime ,			
 				);					
-				$sql = $CI->db->insert( 'ChatBoxMessages'  , $data );	
+				$sql = $CI->db->insert( 'Chatboxmessages'  , $data );	
 				$instructions = 1;
 			} catch(Exception $e) {
 				$instructions = 0;
@@ -591,7 +593,7 @@
 		public function ReloadChatBox( )
 		{			
 			$CI =& get_instance();			
-			$SELECTSTATEMENT = "SELECT * FROM `ChatBoxMessages`;";
+			$SELECTSTATEMENT = "SELECT * FROM `Chatboxmessages`;";
 			$query = $CI->db->query(	$SELECTSTATEMENT	);
 			$list = $query->result_array();		
 			foreach( $list as $key => $item) {

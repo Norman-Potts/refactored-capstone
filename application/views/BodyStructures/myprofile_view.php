@@ -150,9 +150,10 @@
 		
 		$(document).on("mouseover", '.NewNotification', function (e) {	
 			console.log(<?php echo $_SESSION['EmployeeID']; ?>);
+			console.log("mouse over");
 			var span = e.target.getElementsByTagName("span");	
 			if(span != undefined &&   span.length == 1 ){
-				console.log(  parseInt(  span[0].innerHTML ));	
+				console.log(  parseInt(  span[0].innerHTML ));	/// notificationID? 
 				var inputarr = {};
 				inputarr["notificationID"] = parseInt( span[0].innerHTML ) ;		
 				inputarr["EmployeeID"] =  <?php  echo $_SESSION['EmployeeID']; ?>;
@@ -171,7 +172,8 @@
 		function loadNotifications( )
 		{						
 			var notifications = JSON.parse('<?php echo $Notifications; ?>');		
-			var msg = "";			
+			var msg = "";		
+			console.log(notifications);	
 			for(var item in notifications)
 			{			
 				if(notifications[item]["readOrUnread"] == false)

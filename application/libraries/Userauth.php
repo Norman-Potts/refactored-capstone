@@ -53,6 +53,7 @@ class Userauth  {
 		{	return "Username needs to be typed like Firstname.Lastname";	}
 			
 		/* Check database for username that was given by user. */
+ 
 		if ($this->userIsInDatabase() == false)
 		{	return "The username you entered does not match any account.";	}
 
