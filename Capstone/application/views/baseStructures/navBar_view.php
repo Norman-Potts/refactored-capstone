@@ -121,11 +121,16 @@
 		<!-- Logout link -->
 		 <a href = "<?= base_url()?>index.php/Home/logout"  > <div id="logoutButton"> <p>Logout</p></div></a>			
 		
-		
-		<!-- If This is a supervisor account show theEditPage link. -->
-		<? if ($_SESSION['Supervisor'] == true  ){   ?>				
-			<a href ="<?= base_url(); ?>index.php?/TheEditPage"> <div id = "EditButton"><p> Supervisor's Controls </p></div></a>				
-		<?}?>		
+		 <?php 
+		 
+		 if ($_SESSION['Supervisor'] == true  ) {
+
+			$h = base_url();
+			echo "<a href =\"".$h."index.php/TheEditPage\"> <div id = \"EditButton\"><p>  Supervisor's Controls </p></div></a>";
+
+			//echo "<a href =\"index.php/TheEditPage"><div id = "EditButton"><p> Supervisor's Controls </p></div></a>";
+		 }
+		 ?>
 		
 		 
 	</div>

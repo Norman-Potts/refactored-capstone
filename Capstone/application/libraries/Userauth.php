@@ -289,11 +289,11 @@ class Userauth  {
 		$employeeID = $_SESSION['EmployeeID'];	
 		$query = $CI->db->query("Select Supervisor, Instructor, Lifeguard, Headguard, Firstname, Lastname, Username FROM `Employees` WHERE `employeeID` = '".$employeeID."';");
 		$row = $query->row(); 	
-        $_SESSION['Username'] = $row->Username;						
-		$_SESSION['Supervisor'] = $row->Supervisor;
-		$_SESSION['Lifeguard'] = $row-> Lifeguard;
-		$_SESSION['Instructor'] = $row-> Instructor;
-		$_SESSION['Headguard'] = $row-> Headguard;
+        $_SESSION['Username'] = (int)$row->Username;						
+		$_SESSION['Supervisor'] = (int)$row->Supervisor;
+		$_SESSION['Lifeguard'] = (int)$row-> Lifeguard;
+		$_SESSION['Instructor'] = (int)$row-> Instructor;
+		$_SESSION['Headguard'] = (int)$row-> Headguard;
 		$_SESSION['Firstname'] = $row->Firstname;
 		$_SESSION['Lastname'] = $row->Lastname;				
 		

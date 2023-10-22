@@ -17,10 +17,11 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
+
+
 --
 -- Database: `capstone`
 --
-
 -- --------------------------------------------------------
 
 --
@@ -33,15 +34,6 @@ CREATE TABLE `Chatboxmessages` (
   `employeeID` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `Chatboxmessages`
---
-
-INSERT INTO `Chatboxmessages` (`CreatedDateAndTime`, `Message`, `employeeID`) VALUES
-('2021-06-01 00:28:19', 0x44616e6b6965446f6f646c65, 1),
-('2021-06-01 00:28:26', 0x597570707070, 1),
-('2021-06-01 00:28:35', 0x49747320776f726b696e67212121, 1),
-('2021-06-01 00:29:33', 0x4d656d657373, 1);
 
 -- --------------------------------------------------------
 
@@ -64,12 +56,12 @@ CREATE TABLE `Employees` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `Employees`
+-- Inserting Two Defualt Employee Accounts. 
 --
 
 INSERT INTO `Employees` (`Username`, `password`, `employeeID`, `Supervisor`, `Instructor`, `Lifeguard`, `Headguard`, `Firstname`, `Lastname`, `NewNotfications`, `Availability`) VALUES
 ('Norman.Potts', '63fPDotkhXh', 1, 1, 0, 0, 0, 'Norman', 'Potts', NULL, '{\"Mondays\":{\"A1\":true,\"A2\":true,\"A3\":true,\"A4\":true,\"A5\":true,\"A6\":true,\"A7\":true,\"ANOT\":false,\"Anytime\":true},\"Tuesday\":{\"A1\":true,\"A2\":true,\"A3\":true,\"A4\":true,\"A5\":true,\"A6\":true,\"A7\":true,\"ANOT\":false,\"Anytime\":true},\"Wednesday\":{\"A1\":true,\"A2\":true,\"A3\":true,\"A4\":true,\"A5\":true,\"A6\":true,\"A7\":true,\"ANOT\":false,\"Anytime\":true},\"Thrusday\":{\"A1\":false,\"A2\":false,\"A3\":false,\"A4\":false,\"A5\":false,\"A6\":false,\"A7\":false,\"ANOT\":true,\"Anytime\":false},\"Friday\":{\"A1\":false,\"A2\":false,\"A3\":false,\"A4\":false,\"A5\":false,\"A6\":false,\"A7\":false,\"ANOT\":true,\"Anytime\":false},\"Saturday\":{\"A1\":true,\"A2\":true,\"A3\":true,\"A4\":true,\"A5\":\" \",\"A6\":\" \",\"A7\":\" \",\"ANOT\":false,\"Anytime\":true},\"Sundays\":{\"A1\":false,\"A2\":false,\"A3\":false,\"A4\":false,\"A5\":false,\"A6\":false,\"A7\":false,\"ANOT\":true,\"Anytime\":false},\"Notes\":\"Yeet Can work anytime \"}'),
-('Dank.Memes', 'password', 2, 0, 0, 1, 0, 'Dank', 'Memes', NULL, 'Nothing yet');
+('John.Doe', 'ExamplePass', 2, 0, 0, 1, 0, 'John', 'Doe', NULL, 'Nothing yet');
 
 -- --------------------------------------------------------
 
@@ -87,23 +79,6 @@ CREATE TABLE `Notifications` (
 
 ALTER TABLE `Notifications` ADD `notificationID` INT NOT NULL AUTO_INCREMENT AFTER `CreatedDateAndTime`, ADD UNIQUE (`notificationID`);
 
---
--- Dumping data for table `Notifications`
---
-
-INSERT INTO `Notifications` (`employeeID`, `type`, `message`, `readOrUnread`, `CreatedDateAndTime`) VALUES
-(2, 5, 0x596f7520776572652061737369676e6564206120536869667420666f7220323032312d30352d33312066726f6d2030303a30303a303020746f2030303a33303a3030206173204c6966656775617264696e672e, 0, '2021-05-31'),
-(3, 5, 0x596f7520776572652061737369676e6564206120536869667420666f7220323032312d30352d33312066726f6d2030303a30303a303020746f2030303a33303a303020617320496e7374727563746f72696e672e, 0, '2021-05-31'),
-(1, 5, 0x596f7520776572652061737369676e6564206120536869667420666f7220323032312d30352d33312066726f6d2030303a30303a303020746f2030303a33303a303020617320486561644775617264696e672e, 1, '2021-05-31'),
-(1, 5, 0x596f7520776572652061737369676e6564206120536869667420666f7220323032312d30352d33312066726f6d2030353a33303a303020746f2031313a30303a30302061732053757065727669736f72696e672e, 1, '2021-05-31'),
-(3, 5, 0x596f7520776572652061737369676e6564206120536869667420666f7220323032312d30352d33312066726f6d2030333a30303a303020746f2030393a30303a3030206173204c6966656775617264696e672e, 0, '2021-05-31'),
-(1, 5, 0x596f7520776572652061737369676e6564206120536869667420666f7220323032312d30372d30352066726f6d2030333a30303a303020746f2030383a33303a3030206173204c6966656775617264696e672e, 1, '2021-05-31'),
-(3, 5, 0x596f7520776572652061737369676e6564206120536869667420666f7220323032312d30362d30352066726f6d2031373a33303a303020746f2032313a33303a303020617320496e7374727563746f72696e672e, 0, '2021-06-05'),
-(3, 5, 0x596f7520776572652061737369676e6564206120536869667420666f7220323032312d30362d30352066726f6d2031313a33303a303020746f2031343a33303a3030206173204c6966656775617264696e672e, 0, '2021-06-05'),
-(2, 5, 0x596f7520776572652061737369676e6564206120536869667420666f7220323032312d30362d30352066726f6d2031313a33303a303020746f2031343a33303a3030206173204c6966656775617264696e672e, 0, '2021-06-05'),
-(3, 5, 0x596f7520776572652061737369676e6564206120536869667420666f7220323032312d30362d30352066726f6d2031353a30303a303020746f2031363a30303a3030206173204c6966656775617264696e672e, 0, '2021-06-05');
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `Shifts`
@@ -119,22 +94,6 @@ CREATE TABLE `Shifts` (
   `Position` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `Shifts`
---
-
-INSERT INTO `Shifts` (`ShiftID`, `DefaultOwnerEmployeeID`, `CurrentOwnerEmployeeID`, `date`, `startTime`, `endTime`, `Position`) VALUES
-(2, 0, 0, '2021-05-31', '00:00:00', '00:30:00', '2'),
-(3, 1, 1, '2021-05-31', '00:00:00', '00:30:00', '3'),
-(4, 1, 1, '2021-05-31', '05:30:00', '11:00:00', '4'),
-(5, 0, 0, '2021-05-31', '03:00:00', '09:00:00', '1'),
-(6, 1, 1, '2021-07-05', '03:00:00', '08:30:00', '1'),
-(7, 0, 0, '2021-06-05', '17:30:00', '21:30:00', '2'),
-(8, 0, 0, '2021-06-05', '11:30:00', '14:30:00', '1'),
-(9, 2, 2, '2021-06-05', '11:30:00', '14:30:00', '1'),
-(10, 0, 0, '2021-06-05', '15:00:00', '16:00:00', '1');
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `Subslips`
@@ -202,7 +161,3 @@ COMMIT;
 
 
 
--- Create user for capstone to access database. 
-CREATE USER 'capstone'@'%' IDENTIFIED VIA mysql_native_password 
-USING '***';GRANT SELECT, INSERT, UPDATE, DELETE ON *.* TO 'capstone'@'%' REQUIRE NONE 
-WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;

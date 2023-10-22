@@ -64,7 +64,7 @@
 		</p>
 		
 		<p>	
-			<h4>Feel free to log in to the account below and make changes to the application.</h4>
+			<h4>Feel free to log in to the accounts below and make changes to the application. Norman Potts has supervisor controls, and John Doe does not. </h4>
 			<table>
 			<thead>
 			<tr>
@@ -74,6 +74,7 @@
 			</thead>
 			<tbody>
 				<tr><td>Norman.Potts</td><td>63fPDotkhXh</td></tr>
+				<tr><td>John.Doe</td><td>ExamplePass</td></tr>
 				</tbody>
 			</table>
 			
