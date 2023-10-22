@@ -1,0 +1,10 @@
+
+Breif installation guide. 
+
+
+1. Copy Capstone folder and contents to apache web directory.
+2. Run 'create-capstone-db.sql' on phpmyadmin to create the mysql database.
+3. create a user called capstone on phpmyadmin and grant it permissions to access data to the capstone database.
+ Confirm password and host match for the user account. 
+4. Confirm 'base_url' in config.php matches the base user you are using. This config field covers all the urls except two jquery post calls 
+ in DisplaySchedule.js. You will have to change the post calls your manually. 
